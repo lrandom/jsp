@@ -3,6 +3,9 @@
     <!-- <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     {{message}}
+    <br>
+    {{filterMessage}}
+    <button @click="clickMe()">Click me</button>
   </div>
 </template>
 
@@ -19,6 +22,28 @@ export default {
   components: {
     //HelloWorld
   },
+  computed:{
+     filterMessage(){
+       return this.message + '. My name is Luan';
+     },
+     filterMessage2(){
+
+     },
+     filterMessage3(){
+
+     }
+  },
+  methods: {
+     clickMe(){
+       this.message = "Say Hello"
+     },
+     clickHis(){
+
+     },
+     clickHer(){
+
+     }
+  },
   beforeCreate() {
      console.log('beforeCreate');
   },
@@ -33,6 +58,7 @@ export default {
     setTimeout(()=>{
        this.message = "Say hi";
     }, 5000);
+    this.clickMe();
   },
   beforeUpdate(){
       console.log('beforeUpdate');
