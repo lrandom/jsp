@@ -2,16 +2,23 @@
   <div id="app">
     <!-- <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    {{message}}
-    <br>
-    {{filterMessage}}
-    <button @click="clickMe()">Click me</button>
+<!--    {{message}}-->
+<!--    <br>-->
+<!--    {{filterMessage}}-->
+<!--    <button @click="clickMe()">Click me</button>-->
+      <MyComp></MyComp>
+
+      <ShowText></ShowText>
+      <ShowText></ShowText>
+      <ShowText :text="message" ref="showText3" @onEmitData="getEmitData"></ShowText>
+
+      <button @click="callChildMethod()">Call Child Method</button>
   </div>
 </template>
 
 <script>
 //import HelloWorld from './components/HelloWorld.vue'
-
+import ShowText from './components/ShowText.vue'
 export default {
   name: 'App',
   data:function(){
@@ -21,16 +28,17 @@ export default {
   },
   components: {
     //HelloWorld
+    ShowText
   },
   computed:{
      filterMessage(){
        return this.message + '. My name is Luan';
      },
      filterMessage2(){
-
+        return this.message + '. My name is Nam';
      },
      filterMessage3(){
-
+       return this.message + '. My name is Long';
      }
   },
   methods: {
@@ -42,6 +50,13 @@ export default {
      },
      clickHer(){
 
+     },
+     callChildMethod(){
+         this.$refs.showText3.displayError();
+     },
+
+      getEmitData(data){
+        alert(data.data);
      }
   },
   beforeCreate() {
