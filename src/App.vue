@@ -11,8 +11,17 @@
       <ShowText></ShowText>
       <ShowText></ShowText>
       <ShowText :text="message" ref="showText3" @onEmitData="getEmitData"></ShowText>
-
       <button @click="callChildMethod()">Call Child Method</button>
+
+      <div v-if="flag">Hello</div>
+
+      <div v-for="item in [1,2,3,4,5,6]" :key="item">
+          {{item}}
+      </div>
+
+      <button @click="toggleHello()">Toggle Hello</button>
+
+      <img :src="bien_anh"/>
   </div>
 </template>
 
@@ -23,7 +32,9 @@ export default {
   name: 'App',
   data:function(){
     return {
-      message:'Hello World'
+      message:'Hello World',
+        flag: true,
+        bien_anh:'test'
     }
   },
   components: {
@@ -57,7 +68,10 @@ export default {
 
       getEmitData(data){
         alert(data.data);
-     }
+     },
+      toggleHello(){
+         this.flag = !this.flag;
+      }
   },
   beforeCreate() {
      console.log('beforeCreate');
